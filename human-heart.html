@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Heart Lab | இதயத் துடிப்பு</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #fff5f5; font-family: 'Segoe UI', sans-serif; }
+        .heart-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Heart Shape Animation */
+        .heart-main {
+            width: 150px;
+            height: 150px;
+            background-color: #d32f2f;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: beat 0.8s infinite;
+            box-shadow: 0 0 40px rgba(211, 47, 47, 0.4);
+        }
+        .heart-main::before, .heart-main::after {
+            content: "";
+            width: 150px;
+            height: 150px;
+            background-color: #d32f2f;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart-main::before { top: -75px; left: 0; }
+        .heart-main::after { left: 75px; top: 0; }
+
+        @keyframes beat {
+            0% { transform: rotate(-45deg) scale(1); }
+            20% { transform: rotate(-45deg) scale(1.1); }
+            40% { transform: rotate(-45deg) scale(1); }
+            60% { transform: rotate(-45deg) scale(1.2); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+
+        /* Blood Flow Particles */
+        .blood-cell {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff5252;
+            border-radius: 50%;
+            display: none;
+        }
+
+        .info-card { background: white; border-radius: 15px; border-left: 5px solid #d32f2f; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5 text-center">
+    <h2 class="fw-bold text-danger">மனித இதயம் - ஒரு மெய்நிகர் பார்வை</h2>
+    <p class="text-muted">இதயம் எவ்வாறு ரத்தத்தை உடல் முழுவதும் இறைக்கிறது என்பதைக் காணுங்கள்.</p>
+
+    <div class="row mt-4 align-items-center">
+        <div class="col-md-6">
+            <div class="heart-container">
+                <div id="heart" class="heart-main"></div>
+            </div>
+            <div class="mt-3">
+                <h4 id="bpmText">துடிப்பு: 72 BPM</h4>
+            </div>
+        </div>
+
+        <div class="col-md-6 text-start">
+            <div class="info-card shadow-sm p-4 mb-3">
+                <h5 class="text-danger"><i class="bi bi-info-circle"></i> உங்களுக்குத் தெரியுமா?</h5>
+                <p id="factText">இதயம் ஒரு நாளில் சுமார் 1,00,000 முறை துடிக்கிறது.</p>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-outline-danger" onclick="changePace('normal')">சாதாரண துடிப்பு (Normal)</button>
+                <button class="btn btn-outline-warning" onclick="changePace('fast')">வேகமான துடிப்பு (Exercise)</button>
+                <button class="btn btn-danger" onclick="togglePulse()">துடிப்பை நிறுத்து/தொடங்கு</button>
+            </div>
+            
+            <div class="alert alert-dark mt-4">
+                <strong>விளக்கம்:</strong> இதயம் சுருங்கும்போது (Systole) ரத்தம் வெளியேற்றப்படுகிறது, விரியும்போது (Diastole) ரத்தம் உள்ளே நுழைகிறது.
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a href="biology-index.html" class="btn btn-secondary px-4">பின்புறம் செல்ல (Back)</a>
+    </div>
+</div>
+
+<script>
+    let heart = document.getElementById('heart');
+    let bpmText = document.getElementById('bpmText');
+    let isPaused = false;
+
+    function changePace(type) {
+        if(isPaused) return;
+        if(type === 'normal') {
+            heart.style.animationDuration = '0.8s';
+            bpmText.innerText = "துடிப்பு: 72 BPM";
+        } else {
+            heart.style.animationDuration = '0.4s';
+            bpmText.innerText = "துடிப்பு: 140 BPM (உடற்பயிற்சியின் போது)";
+        }
+    }
+
+    function togglePulse() {
+        if(!isPaused) {
+            heart.style.animation = 'none';
+            bpmText.innerText = "துடிப்பு நின்றது";
+            isPaused = true;
+        } else {
+            heart.style.animation = 'beat 0.8s infinite';
+            bpmText.innerText = "துடிப்பு: 72 BPM";
+            isPaused = false;
+        }
+    }
+</script>
+
+</body>
+</html>
