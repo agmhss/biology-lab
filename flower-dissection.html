@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower Dissection | மலர் பாகங்கள்</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .flower-parts { display: flex; justify-content: center; gap: 20px; margin-top: 50px; }
+        .part { width: 100px; height: 100px; border: 2px dashed #ccc; padding: 10px; cursor: move; }
+        .petal { background: #e1bee7; border-radius: 50% 50% 0 50%; } /* Petal shape */
+        .sepal { background: #c8e6c9; border-radius: 0 50% 0 50%; } /* Sepal shape */
+        .stamen { width: 20px; height: 60px; background: #fff176; margin: 0 auto; } /* Stamen */
+    </style>
+</head>
+<body>
+    <div class="container text-center py-5">
+        <h3>மலரின் பாகங்கள் (Solanaceae - தக்காளி குடும்பம்)</h3>
+        <div class="flower-parts">
+            <div>
+                <div class="part petal"></div>
+                <p>அல்லி இதழ் (Petal)</p>
+            </div>
+            <div>
+                <div class="part sepal"></div>
+                <p>புல்லி இதழ் (Sepal)</p>
+            </div>
+            <div>
+                <div class="part stamen"></div>
+                <p>மகரந்தத்தாள் (Stamen)</p>
+            </div>
+        </div>
+        <div class="alert alert-info mt-4">
+            <strong>குறிப்பு:</strong> சொலானேசி குடும்ப மலர்களில் அல்லி இதழ்கள் இணைந்திருக்கும் (Gamopetalous).
+        </div>
+        <a href="index.html" class="btn btn-secondary mt-3">Back</a>
+    </div>
+</body>
+</html>
