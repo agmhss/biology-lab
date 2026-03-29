@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Biology Lab | மெய்நிகர் உயிரியல் ஆய்வகம்</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #fdfae6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .hero-section {
+            background: linear-gradient(135deg, #2d5a27, #4e9a06);
+            color: white;
+            padding: 3rem 0;
+            border-bottom: 5px solid #ffcc00;
+        }
+        .lab-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+        }
+        .lab-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .card-icon {
+            font-size: 3.5rem;
+            color: #4e9a06;
+            margin-bottom: 15px;
+        }
+        .badge-custom { background-color: #ffcc00; color: #000; }
+        .nav-pills .nav-link.active { background-color: #2d5a27; }
+        .nav-pills .nav-link { color: #2d5a27; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-2" data-ta="மெய்நிகர் உயிரியல் ஆய்வகம்" data-en="Virtual Biology Laboratory">
+                மெய்நிகர் உயிரியல் ஆய்வகம்
+            </h1>
+            <h4 class="mb-3">அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம்</h4>
+            <span class="badge badge-custom fs-6 px-3 py-2 rounded-pill shadow-sm">
+                <i class="bi bi-tree-fill"></i> உயிரியல் உலகம்
+            </span>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        
+        <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active px-4 mx-2" id="pills-botany-tab" data-bs-toggle="pill" data-bs-target="#pills-botany" type="button" role="tab">தாவரவியல் (Botany)</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link px-4 mx-2" id="pills-zoology-tab" data-bs-toggle="pill" data-bs-target="#pills-zoology" type="button" role="tab">விலங்கியல் (Zoology)</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+            
+            <div class="tab-pane fade show active" id="pills-botany" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm">
+                            <i class="bi bi-patch-check card-icon text-success"></i>
+                            <h4>செல்கள் ஒப்பீடு</h4>
+                            <p class="text-muted">தாவர மற்றும் விலங்கு செல்களை எலக்ட்ரான் நுண்ணோக்கி மூலம் ஒப்பிடுதல்.</p>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='cell-comparison.html'">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm">
+                            <i class="bi bi-sun card-icon text-warning"></i>
+                            <h4>ஒளிச்சேர்க்கை</h4>
+                            <p class="text-muted">ஹைட்ரில்லா சோதனை மூலம் ஆக்ஸிஜன் வெளியேற்றத்தைக் கண்டறிதல்.</p>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='photosynthesis.html'">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm">
+                            <i class="bi bi-flower1 card-icon text-primary"></i>
+                            <h4>மலர் பாகங்கள்</h4>
+                            <p class="text-muted">சொலானேசி (தக்காளி/ஊமத்தை) மலரின் பாகங்களைப் பிரித்து ஆராய்தல்.</p>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='flower-dissection.html'">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-zoology" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm">
+                            <i class="bi bi-heart-pulse card-icon text-danger"></i>
+                            <h4>இதயத்தின் செயல்பாடு</h4>
+                            <p class="text-muted">இதயத் துடிப்பு மற்றும் இரத்த ஓட்டத்தின் அனிமேஷன் பார்வை.</p>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='human-heart.html'">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm">
+                            <i class="bi bi-lungs card-icon text-info"></i>
+                            <h4>சுவாச மண்டலம்</h4>
+                            <p class="text-muted">உதரவிதானம் மற்றும் நுரையீரலின் இயக்கத்தைப் புரிந்துகொள்ளுதல்.</p>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='respiratory-system.html'">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm">
+                            <i class="bi bi-bug card-icon text-dark"></i>
+                            <h4>தவளை உடற்கூறியல்</h4>
+                            <p class="text-muted">தவளையின் உள் உறுப்புகளை மெய்நிகர் முறையில் பிரித்து அறிதல்.</p>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='frog-dissection.html'">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm">
+                            <i class="bi bi-lightning-charge card-icon text-warning"></i>
+                            <h4>நரம்பு மண்டலம்</h4>
+                            <p class="text-muted">நியூரான்கள் வழியாக மின் தூண்டல்கள் கடத்தப்படுவதைக் காணுதல்.</p>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='nervous-system.html'">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-4 text-muted border-top bg-white">
+        <p>© 2026 மெய்நிகர் உயிரியல் ஆய்வகம் | அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
