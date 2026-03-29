@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <title>Frog Dissection | தவளை உடற்கூறியல்</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0f4f0; }
+        .anatomy-box { position: relative; width: 300px; height: 400px; margin: 0 auto; background: #ccd5ae; border-radius: 50% 50% 40% 40%; border: 5px solid #606c38; }
+        .organ { position: absolute; cursor: pointer; transition: transform 0.2s; }
+        .organ:hover { transform: scale(1.2); filter: brightness(1.2); }
+        .heart { width: 30px; height: 30px; background: red; top: 100px; left: 135px; border-radius: 50%; }
+        .lungs { width: 80px; height: 40px; background: #ffb7b2; top: 110px; left: 110px; border-radius: 20px; z-index: -1; }
+        .liver { width: 100px; height: 60px; background: #6b3e2e; top: 150px; left: 100px; clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%); }
+        .stomach { width: 50px; height: 80px; background: #e9edc9; top: 200px; left: 125px; border-radius: 40%; }
+    </style>
+</head>
+<body>
+    <div class="container text-center py-5">
+        <h3>தவளை உடற்கூறியல் (Virtual Frog Dissection)</h3>
+        <p>உறுப்புகளைக் கிளிக் செய்து அவற்றின் பெயரைக் கண்டறியவும்.</p>
+        
+        <div class="anatomy-box">
+            <div class="organ heart" onclick="showInfo('இதயம் (Heart)', 'தவளைக்கு மூன்று அறைகள் கொண்ட இதயம் உள்ளது.')"></div>
+            <div class="organ lungs" onclick="showInfo('நுரையீரல் (Lungs)', 'தவளை நிலத்தில் இருக்கும்போது நுரையீரல் மூலம் சுவாசிக்கிறது.')"></div>
+            <div class="organ liver" onclick="showInfo('கல்லீரல் (Liver)', 'இது செரிமானத்திற்குத் தேவையான பித்தநீரைச் சுரக்கிறது.')"></div>
+            <div class="organ stomach" onclick="showInfo('இரைப்பை (Stomach)', 'உணவு செரிமானம் இங்கே நடைபெறுகிறது.')"></div>
+        </div>
+
+        <div id="info" class="alert alert-success mt-4 d-none"></div>
+        <a href="index.html" class="btn btn-secondary mt-3">Back</a>
+    </div>
+
+    <script>
+        function showInfo(name, desc) {
+            const info = document.getElementById('info');
+            info.innerHTML = `<strong>${name}</strong>: ${desc}`;
+            info.classList.remove('d-none');
+        }
+    </script>
+</body>
+</html>
