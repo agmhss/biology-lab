@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nervous System Lab | நரம்பு மண்டலம்</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        .neuron-container {
+            width: 100%;
+            height: 300px;
+            background: #1a1a2e;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Neuron Structure */
+        .axon {
+            width: 200px;
+            height: 10px;
+            background: #4e9a06;
+            position: relative;
+        }
+        .cell-body {
+            width: 60px;
+            height: 60px;
+            background: #2d5a27;
+            border-radius: 50%;
+            position: absolute;
+            left: -30px;
+            top: -25px;
+            box-shadow: 0 0 15px #4e9a06;
+        }
+
+        /* Impulse Animation */
+        .impulse {
+            width: 15px;
+            height: 15px;
+            background: #ccff00;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: -2.5px;
+            box-shadow: 0 0 20px #ccff00;
+            display: none;
+        }
+        @keyframes travel {
+            0% { left: 0; opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        .brain-icon { font-size: 5rem; color: #5a189a; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5 text-center">
+    <h2 class="fw-bold text-dark">நரம்பு மண்டலம் (Nervous System)</h2>
+    <p class="text-muted">நரம்பு செல்கள் (Neurons) வழியாகத் தகவல்கள் எவ்வாறு பயணிக்கின்றன என்பதை அறியுங்கள்.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="neuron-container">
+                <div class="axon">
+                    <div class="cell-body"></div>
+                    <div id="signal" class="impulse"></div>
+                </div>
+            </div>
+            <button class="btn btn-warning mt-3 fw-bold" onclick="sendSignal()">மின் தூண்டலை அனுப்பு (Send Impulse)</button>
+        </div>
+
+        <div class="col-md-6 text-start">
+            <div class="card shadow-sm border-0 p-4" style="border-right: 5px solid #5a189a !important;">
+                <h5><i class="bi bi-cpu"></i> நரம்பு மண்டலத்தின் பாகங்கள்</h5>
+                <ul class="mt-2">
+                    <li><strong>மைய நரம்பு மண்டலம்:</strong> மூளை மற்றும் தண்டுவடம்.</li>
+                    <li><strong>புற நரம்பு மண்டலம்:</strong> உடல் முழுவதும் பரவியுள்ள நரம்புகள்.</li>
+                    <li><strong>நியூரான் (Neuron):</strong> நரம்பு மண்டலத்தின் அடிப்படைச் செயல் அலகு.</li>
+                </ul>
+            </div>
+            
+            <div id="statusMsg" class="alert alert-secondary mt-3">தூண்டலுக்காகக் காத்திருக்கிறது...</div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a href="biology-index.html" class="btn btn-secondary px-4">பின்புறம் செல்ல (Back)</a>
+    </div>
+</div>
+
+<script>
+    function sendSignal() {
+        const signal = document.getElementById('signal');
+        const msg = document.getElementById('statusMsg');
+        
+        signal.style.display = 'block';
+        signal.style.animation = 'travel 1s linear forwards';
+        msg.innerText = "தகவல் கடத்தப்படுகிறது (Impulse Traveling...)";
+        msg.className = "alert alert-warning mt-3";
+
+        setTimeout(() => {
+            signal.style.display = 'none';
+            signal.style.animation = 'none';
+            msg.innerText = "தகவல் மூளையை அடைந்தது! (Signal Received)";
+            msg.className = "alert alert-success mt-3";
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
