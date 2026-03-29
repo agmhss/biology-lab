@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cell Comparison | செல்கள் ஒப்பீடு</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8fdf8; font-family: 'Segoe UI', sans-serif; }
+        .microscope-view {
+            width: 350px; height: 350px;
+            border: 15px solid #333;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(255,255,255,0.2);
+        }
+        .cell-image {
+            width: 100%; height: 100%;
+            transition: transform 0.5s ease;
+            display: none;
+            object-fit: cover;
+        }
+        .zoom-active { transform: scale(1.8); }
+        .info-table { background: white; border-radius: 10px; overflow: hidden; }
+        .label-tag { font-weight: bold; color: #2d5a27; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5 text-center">
+    <h2 class="fw-bold text-success">எலக்ட்ரான் நுண்ணோக்கி வழி செல்கள்</h2>
+    <p class="text-muted">தாவர மற்றும் விலங்கு செல்களுக்கு இடையேயான முக்கிய வேறுபாடுகளைக் கண்டறியவும்.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-5">
+            <div class="microscope-view" id="microScope">
+                <img id="plantImg" src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=400" class="cell-image" alt="Plant Cell">
+                <img id="animalImg" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=400" class="cell-image" alt="Animal Cell">
+                <div id="noSample" class="text-white mt-5 pt-5">மாதிரியைத் தேர்ந்தெடுக்கவும்</div>
+            </div>
+            
+            <div class="mt-4 d-flex justify-content-center gap-2">
+                <button class="btn btn-success" onclick="viewCell('plant')">தாவர செல் (Plant Cell)</button>
+                <button class="btn btn-primary" onclick="viewCell('animal')">விலங்கு செல் (Animal Cell)</button>
+            </div>
+            <button class="btn btn-outline-dark mt-2" onclick="toggleZoom()">Zoom In/Out</button>
+        </div>
+
+        <div class="col-md-7 text-start">
+            <div class="card shadow-sm border-0 info-table">
+                <div class="card-header bg-success text-white">உற்றுநோக்கல் அட்டவணை (Observation Table)</div>
+                <div class="card-body p-0">
+                    <table class="table table-bordered mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>பண்புகள்</th>
+                                <th>தாவர செல்</th>
+                                <th>விலங்கு செல்</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="label-tag">செல் சுவர்</span></td>
+                                <td>உண்டு (செல்லுலோஸ்)</td>
+                                <td>இல்லை</td>
+                            </tr>
+                            <tr>
+                                <td><span class="label-tag">பசுங்கணிகம்</span></td>
+                                <td>உண்டு</td>
+                                <td>இல்லை</td>
+                            </tr>
+                            <tr>
+                                <td><span class="label-tag">வெற்றிடம் (Vacuoles)</span></td>
+                                <td>பெரியது (மையத்தில்)</td>
+                                <td>சிறியது / தற்காலிகமானது</td>
+                            </tr>
+                            <tr>
+                                <td><span class="label-tag">சென்ட்ரியோல்கள்</span></td>
+                                <td>பொதுவாக இல்லை</td>
+                                <td>உண்டு</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="alert alert-warning mt-3">
+                <strong>முக்கிய குறிப்பு:</strong> எலக்ட்ரான் நுண்ணோக்கி மூலம் செல்லின் உள்ளே உள்ள நுண்ணுறுப்புகளை (Organelles) மிகத் தெளிவாகப் பார்க்க முடியும்.
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a href="biology-index.html" class="btn btn-secondary px-4">பின்புறம் செல்ல (Back)</a>
+    </div>
+</div>
+
+<script>
+    function viewCell(type) {
+        document.getElementById('noSample').style.display = 'none';
+        document.getElementById('plantImg').style.display = (type === 'plant') ? 'block' : 'none';
+        document.getElementById('animalImg').style.display = (type === 'animal') ? 'block' : 'none';
+    }
+
+    function toggleZoom() {
+        const plant = document.getElementById('plantImg');
+        const animal = document.getElementById('animalImg');
+        plant.classList.toggle('zoom-active');
+        animal.classList.toggle('zoom-active');
+    }
+</script>
+
+</body>
+</html>
