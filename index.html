@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Biology Lab | மெய்நிகர் உயிரியல் ஆய்வகம்</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #fdfae6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .hero-section {
+            background: linear-gradient(135deg, #2d5a27, #4e9a06);
+            color: white;
+            padding: 3rem 0;
+            border-bottom: 5px solid #ffcc00;
+        }
+        .lab-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+            margin-bottom: 20px;
+        }
+        .lab-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .card-icon {
+            font-size: 3.5rem;
+            color: #4e9a06;
+            margin-bottom: 15px;
+        }
+        .card-body-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .badge-custom { background-color: #ffcc00; color: #000; }
+        .nav-pills .nav-link.active { background-color: #2d5a27; }
+        .nav-pills .nav-link { color: #2d5a27; font-weight: bold; }
+        @media (max-width: 768px) {
+            .btn-success { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section text-center">
+        <div class="container">
+            <div class="d-flex justify-content-end mb-3">
+                <button id="langToggleBtn" class="btn btn-outline-light btn-sm fw-bold" onclick="toggleLanguage()">
+                    Switch to English
+                </button>
+            </div>
+            <h1 class="display-4 fw-bold mb-2" data-ta="மெய்நிகர் உயிரியல் ஆய்வகம்" data-en="Virtual Biology Laboratory">
+                மெய்நிகர் உயிரியல் ஆய்வகம்
+            </h1>
+            <h4 class="mb-3" data-ta="அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம்" data-en="Anna Govt. Model HSS, Patteeswaram">அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி, பட்டீஸ்வரம்</h4>
+            <span class="badge badge-custom fs-6 px-3 py-2 rounded-pill shadow-sm" data-ta="உயிரியல் உலகம்" data-en="World of Biology">
+                <i class="bi bi-tree-fill"></i> உயிரியல் உலகம்
+            </span>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        
+        <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active px-4 mx-2" id="pills-botany-tab" data-bs-toggle="pill" data-bs-target="#pills-botany" type="button" role="tab" data-ta="தாவரவியல் (Botany)" data-en="Botany">தாவரவியல் (Botany)</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link px-4 mx-2" id="pills-zoology-tab" data-bs-toggle="pill" data-bs-target="#pills-zoology" type="button" role="tab" data-ta="விலங்கியல் (Zoology)" data-en="Zoology">விலங்கியல் (Zoology)</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+            
+            <div class="tab-pane fade show active" id="pills-botany" role="tabpanel">
+                <div class="row g-4">
+                    <!-- Original Cards -->
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-patch-check card-icon text-success"></i>
+                                <h4 data-ta="செல்கள் ஒப்பீடு" data-en="Cell Comparison">செல்கள் ஒப்பீடு</h4>
+                                <p class="text-muted" data-ta="தாவர மற்றும் விலங்கு செல்களை எலக்ட்ரான் நுண்ணோக்கி மூலம் ஒப்பிடுதல்." data-en="Comparing plant and animal cells under an electron microscope.">தாவர மற்றும் விலங்கு செல்களை எலக்ட்ரான் நுண்ணோக்கி மூலம் ஒப்பிடுதல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='cell-comparison.html'" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-sun card-icon text-warning"></i>
+                                <h4 data-ta="ஒளிச்சேர்க்கை" data-en="Photosynthesis">ஒளிச்சேர்க்கை</h4>
+                                <p class="text-muted" data-ta="ஹைட்ரில்லா சோதனை மூலம் ஆக்ஸிஜன் வெளியேற்றத்தைக் கண்டறிதல்." data-en="Observing oxygen evolution through the Hydrilla experiment.">ஹைட்ரில்லா சோதனை மூலம் ஆக்ஸிஜன் வெளியேற்றத்தைக் கண்டறிதல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='photosynthesis.html'" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-flower1 card-icon text-primary"></i>
+                                <h4 data-ta="மலர் பாகங்கள்" data-en="Flower Dissection">மலர் பாகங்கள்</h4>
+                                <p class="text-muted" data-ta="சொலானேசி (தக்காளி/ஊமத்தை) மலரின் பாகங்களைப் பிரித்து ஆராய்தல்." data-en="Dissecting and analyzing the parts of a Solanaceae flower.">சொலானேசி (தக்காளி/ஊமத்தை) மலரின் பாகங்களைப் பிரித்து ஆராய்தல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='flower-dissection.html'" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Cell Architecture Studio -->
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-hexagon-fill card-icon text-info"></i>
+                                <h4 data-ta="செல்களின் 3D வடிவமைப்பு" data-en="3D Cell Architecture">செல்களின் 3D வடிவமைப்பு</h4>
+                                <p class="text-muted" data-ta="உயிரணுக்களின் நுண்ணிய அமைப்புகளை 3D-யில் ஆராய்தல்." data-en="Explore the microscopic structures of cells in interactive 3D.">உயிரணுக்களின் நுண்ணிய அமைப்புகளை 3D-யில் ஆராய்தல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.open('https://cell-architecture-studio.lanshuagent.com/', '_blank')" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு <i class="bi bi-box-arrow-up-right ms-1"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Learn.Genetics -->
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-diagram-3 card-icon text-secondary"></i>
+                                <h4 data-ta="Learn.Genetics (மரபணு)" data-en="Learn.Genetics">Learn.Genetics (மரபணு)</h4>
+                                <p class="text-muted" data-ta="செல்கள், டி.என்.ஏ (DNA) மற்றும் மரபியலின் ஊடாடும் விளக்கங்கள்." data-en="Interactive modules for cells, DNA, and genetics.">செல்கள், டி.என்.ஏ (DNA) மற்றும் மரபியலின் ஊடாடும் விளக்கங்கள்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.open('https://learn.genetics.utah.edu/', '_blank')" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு <i class="bi bi-box-arrow-up-right ms-1"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- NEW: OLabs Botany -->
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-pc-display card-icon text-success"></i>
+                                <h4 data-ta="OLabs: தாவரவியல்" data-en="OLabs: Botany">OLabs: தாவரவியல்</h4>
+                                <p class="text-muted" data-ta="பள்ளிப் பாடத்திட்டத்தின் அடிப்படையிலான தாவரவியல் மெய்நிகர் ஆய்வுகள்." data-en="Curriculum-aligned virtual botany experiments.">பள்ளிப் பாடத்திட்டத்தின் அடிப்படையிலான தாவரவியல் மெய்நிகர் ஆய்வுகள்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.open('http://www.olabs.edu.in/?pg=topMenu&id=42', '_blank')" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு <i class="bi bi-box-arrow-up-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-zoology" role="tabpanel">
+                <div class="row g-4">
+                    <!-- Original Cards -->
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-heart-pulse card-icon text-danger"></i>
+                                <h4 data-ta="இதயத்தின் செயல்பாடு" data-en="Heart Function">இதயத்தின் செயல்பாடு</h4>
+                                <p class="text-muted" data-ta="இதயத் துடிப்பு மற்றும் இரத்த ஓட்டத்தின் அனிமேஷன் பார்வை." data-en="Animated view of heartbeat and blood circulation.">இதயத் துடிப்பு மற்றும் இரத்த ஓட்டத்தின் அனிமேஷன் பார்வை.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='human-heart.html'" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-lungs card-icon text-info"></i>
+                                <h4 data-ta="சுவாச மண்டலம்" data-en="Respiratory System">சுவாச மண்டலம்</h4>
+                                <p class="text-muted" data-ta="உதரவிதானம் மற்றும் நுரையீரலின் இயக்கத்தைப் புரிந்துகொள்ளுதல்." data-en="Understanding the movement of the diaphragm and lungs.">உதரவிதானம் மற்றும் நுரையீரலின் இயக்கத்தைப் புரிந்துகொள்ளுதல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='respiratory-system.html'" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-bug card-icon text-dark"></i>
+                                <h4 data-ta="தவளை உடற்கூறியல்" data-en="Frog Dissection">தவளை உடற்கூறியல்</h4>
+                                <p class="text-muted" data-ta="தவளையின் உள் உறுப்புகளை மெய்நிகர் முறையில் பிரித்து அறிதல்." data-en="Virtual dissection of a frog's internal organs.">தவளையின் உள் உறுப்புகளை மெய்நிகர் முறையில் பிரித்து அறிதல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='frog-dissection.html'" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-lightning-charge card-icon text-warning"></i>
+                                <h4 data-ta="நரம்பு மண்டலம்" data-en="Nervous System">நரம்பு மண்டலம்</h4>
+                                <p class="text-muted" data-ta="நியூரான்கள் வழியாக மின் தூண்டல்கள் கடத்தப்படுவதைக் காணுதல்." data-en="Visualizing electrical impulses transmitted through neurons.">நியூரான்கள் வழியாக மின் தூண்டல்கள் கடத்தப்படுவதைக் காணுதல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.location.href='nervous-system.html'" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு</button>
+                        </div>
+                    </div>
+
+                    <!-- NEW: BioDigital -->
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-person-bounding-box card-icon text-primary"></i>
+                                <h4 data-ta="BioDigital: உடற்கூறியல்" data-en="BioDigital: Human Anatomy">BioDigital: உடற்கூறியல்</h4>
+                                <p class="text-muted" data-ta="மனித உடலின் உறுப்புகளை 3D-யில் முழுமையாகப் பார்த்தல்." data-en="Explore the organs of the human body entirely in 3D.">மனித உடலின் உறுப்புகளை 3D-யில் முழுமையாகப் பார்த்தல்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.open('https://www.biodigital.com/', '_blank')" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு <i class="bi bi-box-arrow-up-right ms-1"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- NEW: RCSB PDB -->
+                    <div class="col-md-4">
+                        <div class="card lab-card text-center p-4 shadow-sm h-100">
+                            <div class="card-body-content">
+                                <i class="bi bi-virus card-icon text-danger"></i>
+                                <h4 data-ta="RCSB PDB (புரதங்கள்)" data-en="RCSB PDB (Proteins)">RCSB PDB (புரதங்கள்)</h4>
+                                <p class="text-muted" data-ta="உயிரியல் மூலக்கூறுகள் மற்றும் புரதங்களின் 3D தரவுத்தளம்." data-en="3D database for biological molecules and proteins.">உயிரியல் மூலக்கூறுகள் மற்றும் புரதங்களின் 3D தரவுத்தளம்.</p>
+                            </div>
+                            <button class="btn btn-success mt-auto" onclick="window.open('https://www.rcsb.org/', '_blank')" data-ta="ஆய்வை தொடங்கு" data-en="Start Experiment">ஆய்வை தொடங்கு <i class="bi bi-box-arrow-up-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-4 text-muted border-top bg-white">
+        <p data-ta="© 2026 மெய்நிகர் உயிரியல் ஆய்வகம் | அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி" data-en="© 2026 Virtual Biology Lab | Anna Govt. Model HSS">© 2026 மெய்நிகர் உயிரியல் ஆய்வகம் | அண்ணா அரசு மாதிரி மேல்நிலைப் பள்ளி</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentLang = 'ta';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ta' ? 'en' : 'ta';
+            const toggleBtn = document.getElementById('langToggleBtn');
+            toggleBtn.innerText = currentLang === 'ta' ? 'Switch to English' : 'தமிழில் மாற்றுக';
+
+            const elements = document.querySelectorAll('[data-ta]');
+            elements.forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+    </script>
+</body>
+              </html>
