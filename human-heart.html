@@ -17,43 +17,22 @@
             align-items: center;
         }
 
-        /* Heart Shape Animation */
+        /* Biological Heart Image Style */
         .heart-main {
-            width: 150px;
-            height: 150px;
-            background-color: #d32f2f;
-            position: relative;
-            transform: rotate(-45deg);
+            width: 220px;
+            height: auto;
             animation: beat 0.8s infinite;
-            box-shadow: 0 0 40px rgba(211, 47, 47, 0.4);
+            filter: drop-shadow(0 15px 25px rgba(211, 47, 47, 0.4)); /* Adds a slight shadow to the image */
+            transition: transform 0.2s;
         }
-        .heart-main::before, .heart-main::after {
-            content: "";
-            width: 150px;
-            height: 150px;
-            background-color: #d32f2f;
-            border-radius: 50%;
-            position: absolute;
-        }
-        .heart-main::before { top: -75px; left: 0; }
-        .heart-main::after { left: 75px; top: 0; }
 
+        /* Updated Beat Animation (Removed the -45deg rotation) */
         @keyframes beat {
-            0% { transform: rotate(-45deg) scale(1); }
-            20% { transform: rotate(-45deg) scale(1.1); }
-            40% { transform: rotate(-45deg) scale(1); }
-            60% { transform: rotate(-45deg) scale(1.2); }
-            100% { transform: rotate(-45deg) scale(1); }
-        }
-
-        /* Blood Flow Particles */
-        .blood-cell {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff5252;
-            border-radius: 50%;
-            display: none;
+            0% { transform: scale(1); }
+            20% { transform: scale(1.05); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.15); }
+            100% { transform: scale(1); }
         }
 
         .info-card { background: white; border-radius: 15px; border-left: 5px solid #d32f2f; }
@@ -68,7 +47,8 @@
     <div class="row mt-4 align-items-center">
         <div class="col-md-6">
             <div class="heart-container">
-                <div id="heart" class="heart-main"></div>
+                <!-- Replaced CSS heart with a Biological Heart Image -->
+                <img id="heart" class="heart-main" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Heart_normal.svg/512px-Heart_normal.svg.png" alt="Anatomical Human Heart">
             </div>
             <div class="mt-3">
                 <h4 id="bpmText">துடிப்பு: 72 BPM</h4>
@@ -121,7 +101,14 @@
             isPaused = true;
         } else {
             heart.style.animation = 'beat 0.8s infinite';
-            bpmText.innerText = "துடிப்பு: 72 BPM";
+            // Restore correct speed based on current text
+            if(bpmText.innerText.includes("140")) {
+                heart.style.animationDuration = '0.4s';
+                bpmText.innerText = "துடிப்பு: 140 BPM (உடற்பயிற்சியின் போது)";
+            } else {
+                heart.style.animationDuration = '0.8s';
+                bpmText.innerText = "துடிப்பு: 72 BPM";
+            }
             isPaused = false;
         }
     }
