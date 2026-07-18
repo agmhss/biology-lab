@@ -13,16 +13,16 @@
             border-radius: 50%;
             margin: 0 auto;
             overflow: hidden;
-            background: #fff;
+            background: #000;
             position: relative;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+            box-shadow: inset 0 0 50px rgba(255,255,255,0.2);
         }
         .cell-image {
             width: 100%; height: 100%;
             transition: transform 0.5s ease;
             display: none;
-            object-fit: contain;
-            padding: 15px;
+            /* use contain to show full, labeled diagrams in the circular view */
+            object-fit: contain; 
         }
         .zoom-active { transform: scale(1.8); }
         .info-table { background: white; border-radius: 10px; overflow: hidden; }
@@ -38,12 +38,11 @@
     <div class="row mt-4">
         <div class="col-md-5">
             <div class="microscope-view" id="microScope">
-                <!-- Changed to Direct SVG Links for higher reliability -->
-                <img id="plantImg" src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Plant_cell_structure_svg.svg" class="cell-image" alt="Detailed Plant Cell Structure">
-                
-                <img id="animalImg" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Animal_cell_structure_en.svg" class="cell-image" alt="Detailed Animal Cell Structure">
-                
-                <div id="noSample" class="text-dark mt-5 pt-5 fw-bold">மாதிரியைத் தேர்ந்தெடுக்கவும்</div>
+                <!-- Using specific referenced plant cell diagram -->
+                <img id="plantImg" src="Plant_cell_structure.jpg" class="cell-image" alt="Plant Cell Diagram">
+                <!-- Using specific referenced animal cell diagram -->
+                <img id="animalImg" src="Animal_cell_structure_en.svg.webp" class="cell-image" alt="Animal Cell Diagram">
+                <div id="noSample" class="text-white mt-5 pt-5">மாதிரியைத் தேர்ந்தெடுக்கவும்</div>
             </div>
             
             <div class="mt-4 d-flex justify-content-center gap-2">
@@ -91,7 +90,7 @@
                 </div>
             </div>
             <div class="alert alert-warning mt-3">
-                <strong>முக்கிய குறிப்பு:</strong> எலக்ட்ரான் நுண்ணோக்கி மூலம் செல்லின் உள்ளே உள்ள நுண்ணுறுப்புகளை (Organelles) மிகத் தெளிவாகப் பார்க்க முடியும்.
+                <strong>முக்கிய குறிப்பு:</strong> எலக்ட்ரான் நுண்ணோக்கி மூலம் செல்லின் உள்ளே உள்ள நுண்ணுறுப்புகளை (Organelles) மிகத் தெளிவாகப் பார்க்க முடியும். மேலே உள்ள படங்களில் விரிவான நுண்ணமைப்பைக் காணலாம்.
             </div>
         </div>
     </div>
