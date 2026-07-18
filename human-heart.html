@@ -22,11 +22,11 @@
             width: 220px;
             height: auto;
             animation: beat 0.8s infinite;
-            filter: drop-shadow(0 15px 25px rgba(211, 47, 47, 0.4)); /* Adds a slight shadow to the image */
+            filter: drop-shadow(0 15px 25px rgba(211, 47, 47, 0.4));
             transition: transform 0.2s;
         }
 
-        /* Updated Beat Animation (Removed the -45deg rotation) */
+        /* Beat Animation */
         @keyframes beat {
             0% { transform: scale(1); }
             20% { transform: scale(1.05); }
@@ -47,8 +47,8 @@
     <div class="row mt-4 align-items-center">
         <div class="col-md-6">
             <div class="heart-container">
-                <!-- Replaced CSS heart with a Biological Heart Image -->
-                <img id="heart" class="heart-main" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Heart_normal.svg/512px-Heart_normal.svg.png" alt="Anatomical Human Heart">
+                <!-- Changed to Direct SVG Link -->
+                <img id="heart" class="heart-main" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Heart_normal.svg" alt="Anatomical Human Heart">
             </div>
             <div class="mt-3">
                 <h4 id="bpmText">துடிப்பு: 72 BPM</h4>
@@ -101,7 +101,6 @@
             isPaused = true;
         } else {
             heart.style.animation = 'beat 0.8s infinite';
-            // Restore correct speed based on current text
             if(bpmText.innerText.includes("140")) {
                 heart.style.animationDuration = '0.4s';
                 bpmText.innerText = "துடிப்பு: 140 BPM (உடற்பயிற்சியின் போது)";
