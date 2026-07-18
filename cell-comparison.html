@@ -13,15 +13,16 @@
             border-radius: 50%;
             margin: 0 auto;
             overflow: hidden;
-            background: #000;
+            background: #fff; /* Changed to white for better diagram visibility */
             position: relative;
-            box-shadow: inset 0 0 50px rgba(255,255,255,0.2);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
         }
         .cell-image {
             width: 100%; height: 100%;
             transition: transform 0.5s ease;
             display: none;
-            object-fit: cover;
+            object-fit: contain; /* Changed from cover to contain to show full diagram */
+            padding: 10px;
         }
         .zoom-active { transform: scale(1.8); }
         .info-table { background: white; border-radius: 10px; overflow: hidden; }
@@ -37,9 +38,13 @@
     <div class="row mt-4">
         <div class="col-md-5">
             <div class="microscope-view" id="microScope">
-                <img id="plantImg" src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=400" class="cell-image" alt="Plant Cell">
-                <img id="animalImg" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=400" class="cell-image" alt="Animal Cell">
-                <div id="noSample" class="text-white mt-5 pt-5">மாதிரியைத் தேர்ந்தெடுக்கவும்</div>
+                <!-- Detailed Plant Cell Diagram -->
+                <img id="plantImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Plant_cell_structure_svg.svg/800px-Plant_cell_structure_svg.svg.png" class="cell-image" alt="Detailed Plant Cell Structure">
+                
+                <!-- Detailed Animal Cell Diagram -->
+                <img id="animalImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Animal_cell_structure_en.svg/800px-Animal_cell_structure_en.svg.png" class="cell-image" alt="Detailed Animal Cell Structure">
+                
+                <div id="noSample" class="text-dark mt-5 pt-5 fw-bold">மாதிரியைத் தேர்ந்தெடுக்கவும்</div>
             </div>
             
             <div class="mt-4 d-flex justify-content-center gap-2">
